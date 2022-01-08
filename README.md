@@ -3,7 +3,8 @@
 A simple movie app using TMDB API(developers.themoviedb.org)
 
 ## Screenshot
-in development
+
+![w](https://user-images.githubusercontent.com/42675180/148647300-04f2bda2-05a8-45d3-84c5-d8a0c59c9224.gif)
 
 ## Models
 in development
