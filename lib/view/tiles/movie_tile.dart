@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:movies/models/movie.dart';
 
 class MovieTile extends StatelessWidget {
-  const MovieTile({Key? key, this.url, this.title, this.year})
-      : super(key: key);
+  const MovieTile({Key? key, this.movie}) : super(key: key);
 
-  final String? url;
-  final String? title;
-  final int? year;
+  final Movie? movie;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 10),
+      padding: const EdgeInsets.only(left: 0, right: 10, bottom: 10, top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(15)),
-            child: Image.asset(
-              "assets/spiderman.jpg",
-              fit: BoxFit.fill,
-              width: 140,
+          Expanded(
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
+              child: Image.asset(
+                "assets/${movie!.img}",
+                fit: BoxFit.cover,
+                width: 140,
+              ),
             ),
           ),
           Text(
-            "$title",
+            "${movie!.title}",
             style: const TextStyle(
                 fontSize: 18,
                 color: Colors.white,
                 fontWeight: FontWeight.normal),
           ),
           Text(
-            "$year",
+            "${movie!.year}",
             style: const TextStyle(
                 fontSize: 14, color: Colors.white, fontWeight: FontWeight.w100),
           ),

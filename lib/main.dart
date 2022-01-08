@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData();
     
-
     return MaterialApp(
       home: const HomePage(
         title: "Movie App",

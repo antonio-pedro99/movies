@@ -23,19 +23,23 @@ class _HomePageState extends State<HomePage> {
         Wrap(
           alignment: WrapAlignment.start,
           verticalDirection: VerticalDirection.up,
+          direction: Axis.horizontal,
           children: [
-            const Text(
-              "Popular",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+            const Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Text(
+                "Popular",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
             const SizedBox(
-              width: 10,
+              width: 2,
             ),
             Container(
-              padding: const EdgeInsets.all(2),
+              padding: const EdgeInsets.only(left: 2, right: 2),
               alignment: Alignment.center,
               width: 60,
               height: 20,
@@ -74,9 +78,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   child: MovieTile(
-                    title: movies[index].title,
-                    url: movies[index].img,
-                    year: movies[index].year,
+                    movie: movies[index],
                   ),
                   onTap: () {
                     Navigator.push(context,
@@ -96,10 +98,13 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        const Text(
-          "TV Show",
-          style: TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        const Padding(
+          padding: EdgeInsets.only(left: 10, right: 10),
+          child: Text(
+            "TV Shows",
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
         Container(
           padding: const EdgeInsets.all(10),
@@ -108,10 +113,16 @@ class _HomePageState extends State<HomePage> {
               itemCount: movies.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return MovieTile(
-                  title: movies[index].title,
-                  url: movies[index].img,
-                  year: movies[index].year,
+                return GestureDetector(
+                  child: MovieTile(
+                    movie: movies[index],
+                  ),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return MovieDetails(movie: movies[index]);
+                    }));
+                  },
                 );
               }),
         )
@@ -124,10 +135,13 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        const Text(
-          "Latest Movies",
-          style: TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        const Padding(
+          padding: EdgeInsets.only(left: 10, right: 10),
+          child: Text(
+            "Latest",
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
         Container(
           padding: const EdgeInsets.all(10),
@@ -136,10 +150,16 @@ class _HomePageState extends State<HomePage> {
               itemCount: movies.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return MovieTile(
-                  title: movies[index].title,
-                  url: movies[index].img,
-                  year: movies[index].year,
+                return GestureDetector(
+                  child: MovieTile(
+                    movie: movies[index],
+                  ),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return MovieDetails(movie: movies[index]);
+                    }));
+                  },
                 );
               }),
         )
@@ -156,18 +176,21 @@ class _HomePageState extends State<HomePage> {
           alignment: WrapAlignment.start,
           verticalDirection: VerticalDirection.up,
           children: [
-            const Text(
-              "Trending",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+            const Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Text(
+                "Trending",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
             const SizedBox(
-              width: 10,
+              width: 2,
             ),
             Container(
-              padding: const EdgeInsets.all(2),
+              //padding: const EdgeInsets.all(2),
               alignment: Alignment.center,
               width: 60,
               height: 20,
@@ -204,10 +227,16 @@ class _HomePageState extends State<HomePage> {
               itemCount: movies.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return MovieTile(
-                  title: movies[index].title,
-                  url: movies[index].img,
-                  year: movies[index].year,
+                return GestureDetector(
+                  child: MovieTile(
+                    movie: movies[index],
+                  ),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return MovieDetails(movie: movies[index]);
+                    }));
+                  },
                 );
               }),
         )
@@ -256,17 +285,17 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 5),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: EdgeInsets.zero,
               child: buildPopularMovies(),
             ),
             const SizedBox(height: 5),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: EdgeInsets.zero,
               child: buildTVShow(),
             ),
             const SizedBox(height: 5),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: EdgeInsets.zero,
               child: buildTrending(),
             )
           ],

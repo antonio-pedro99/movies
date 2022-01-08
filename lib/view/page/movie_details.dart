@@ -16,7 +16,8 @@ class _MovieDetailsState extends State<MovieDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("${widget.movie!.title}")),
-    );
+        body: Stack(
+      children: [Image.asset("assets/${widget.movie!.img}")],
+    ));
   }
 }
